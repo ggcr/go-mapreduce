@@ -29,7 +29,6 @@ func strip(s string) string {
 		b := s[i]
 		if ('a' <= b && b <= 'z') ||
 			('A' <= b && b <= 'Z') ||
-			('0' <= b && b <= '9') ||
 			b == ' ' {
 			result.WriteByte(b)
 		} else {
