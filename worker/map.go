@@ -36,7 +36,7 @@ func strip(s string) string {
 			result.WriteByte(' ')
 		}
 	}
-	return result.String()
+	return strings.ToLower(result.String())
 }
 
 func genMap(file string, key string) map[string]int {
