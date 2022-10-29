@@ -36,13 +36,13 @@ func strip(s string) string {
 			result.WriteByte(' ')
 		}
 	}
-	return strings.ToLower(result.String())
+	return result.String()
 }
 
 func genMap(file string, key string) map[string]int {
 	tmpMap := make(map[string]int)
 	for _, words := range strings.Fields(file) {
-		tmpMap[words] += 1
+		tmpMap[strings.ToLower(words)] += 1
 	}
 	return tmpMap
 }
