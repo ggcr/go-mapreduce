@@ -20,7 +20,7 @@ func readFile(key string) string {
 	v, err := os.ReadFile(key)
 	check(err)
 	fmt.Printf("file %s read ✅\n", key)
-	return strip(string(v))
+	return strip(strings.ToLower(string(v)))
 }
 
 func strip(s string) string {
@@ -41,7 +41,7 @@ func strip(s string) string {
 func genMap(file string, key string) map[string]int {
 	tmpMap := make(map[string]int)
 	for _, words := range strings.Fields(file) {
-		tmpMap[strings.ToLower(words)] += 1
+		tmpMap[words] += 1
 	}
 	return tmpMap
 }

@@ -33,25 +33,16 @@ func decodeDict(filepath string) map[string]int {
 	return decodedMap
 }
 
-func readAllMaps() [](map[string]int) {
+func merge(out *Output) map[string]int {
+	var wg sync.WaitGroup
+
 	files, err := os.ReadDir("tmp")
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	res := [](map[string]int){}
-
 	for _, file := range files {
 		k := fmt.Sprintf("tmp/%s", file.Name())
-		res = append(res, decodeDict(k))
-	}
-
-	return res
-}
-
-func merge(maps [](map[string]int), out *Output) map[string]int {
-	var wg sync.WaitGroup
-	for _, m := range maps {
 		wg.Add(1)
 		go func(l map[string]int) {
 			defer wg.Done()
@@ -61,9 +52,10 @@ func merge(maps [](map[string]int), out *Output) map[string]int {
 				out.mu.Unlock()
 			}
 			fmt.Printf("length of final map: %d\n", len(out.out_map))
-		}(m)
+		}(decodeDict(k))
 	}
 	wg.Wait()
+
 	return out.out_map
 }
 
@@ -78,8 +70,7 @@ func Reduce() {
 	out := Output{
 		out_map: map[string]int{},
 	}
-	slice_maps := readAllMaps()
-	output := merge(slice_maps, &out)
+	output := merge(&out)
 	writeOut(output)
 	fmt.Println(len(output))
 }
