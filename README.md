@@ -40,8 +40,6 @@ We define the entire Job of MapReduce and then tasks such as a single Map functi
 ## Implementation
 Remember and don’t forget that MapReduce is an interface, the high level programmer won’t need to know any of the previous explanations.
 
-Remember and don’t forget that MapReduce is an interface, the high level programmer won’t need to know any of the previous explanations.
-
 **Map(key, value)** – This is the map function call, key is the filename, and value is the filename content.
 ```
 Split v into words
