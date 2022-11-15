@@ -1,4 +1,5 @@
 # MapReduce
+
 ## Background
 MapReduce comes from a paper by two actual Google Senior Fellows, Jeff Dean and Sanjay Ghemawat. They both are the only awarded with this title which is the highest position at Google and one of the main reasons is because they saved the entire company and changed the course of our lives forever.
 
@@ -70,3 +71,54 @@ What Google did was to make the Master know the location of the Input splits and
 The other problem Google encountered was that each worker would store a row of occurrences, and what reduce really needs as the values is the vectorized columns, not the rows:
  ![Captura de Pantalla 2022-10-29 a las 21 01 50](https://user-images.githubusercontent.com/57730982/198848508-64caeebf-8e3c-4a0d-b543-b359944b3ebc.png)
 The operation of transforming the Rows into Columns is called Shuffle in the paper.
+
+## How To Run
+```bash
+$ go run main.go
+
+============== MAP PHASE ==============
+file input/pg-being_ernest.txt read ✅
+file input/pg-metamorphosis.txt read ✅
+file input/pg-huckleberry_finn.txt read ✅
+file input/pg-dorian_gray.txt read ✅
+file input/pg-tom_sawyer.txt read ✅
+file input/pg-frankenstein.txt read ✅
+file input/pg-sherlock_holmes.txt read ✅
+file tmp/pg-being_ernest.txt wrote 📕
+file tmp/pg-metamorphosis.txt wrote 📕
+input/pg-being_ernest.txt DONE
+input/pg-metamorphosis.txt DONE
+file input/pg-grimm.txt read ✅
+file tmp/pg-dorian_gray.txt wrote 📕
+input/pg-dorian_gray.txt DONE
+file tmp/pg-frankenstein.txt wrote 📕
+input/pg-frankenstein.txt DONE
+file tmp/pg-tom_sawyer.txt wrote 📕
+input/pg-tom_sawyer.txt DONE
+file tmp/pg-grimm.txt wrote 📕
+input/pg-grimm.txt DONE
+file tmp/pg-huckleberry_finn.txt wrote 📕
+input/pg-huckleberry_finn.txt DONE
+file tmp/pg-sherlock_holmes.txt wrote 📕
+input/pg-sherlock_holmes.txt DONE
+
+======================== REDUCE PHASE =====================
+length for readed dict (Key="tmp/pg-being_ernest.txt") => 3012
+length of final map: 3012
+length for readed dict (Key="tmp/pg-dorian_gray.txt") => 7119
+length of final map: 7977
+length for readed dict (Key="tmp/pg-frankenstein.txt") => 7262
+length of final map: 11457
+length for readed dict (Key="tmp/pg-grimm.txt") => 5134
+length of final map: 12880
+length for readed dict (Key="tmp/pg-huckleberry_finn.txt") => 6483
+length for readed dict (Key="tmp/pg-metamorphosis.txt") => 2982
+length of final map: 15516
+length of final map: 15817
+length for readed dict (Key="tmp/pg-sherlock_holmes.txt") => 8070
+length of final map: 17905
+length for readed dict (Key="tmp/pg-tom_sawyer.txt") => 7625
+
+length of final map output.json: 19436
+107.629025ms
+```
