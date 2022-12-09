@@ -125,4 +125,4 @@ length of final map output.json: 19436
 
 ## References
 
-J. Dean and S. Ghemawat, “MapReduce: Simplified data processing on large clusters,” Commun. ACM, vol. 51, no. 1, p. 107–113, Jan. 2008.
+J. Dean and S. Ghemawat, “MapReduce: Simplified data processing on large clusters” Jan. 2008.
