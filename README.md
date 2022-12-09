@@ -122,3 +122,7 @@ length for readed dict (Key="tmp/pg-tom_sawyer.txt") => 7625
 length of final map output.json: 19436
 107.629025ms
 ```
+
+## References
+
+J. Dean and S. Ghemawat, “MapReduce: Simplified data processing on large clusters,” Commun. ACM, vol. 51, no. 1, p. 107–113, Jan. 2008.
